@@ -14,8 +14,8 @@ resource "azurerm_container_group" "example" {
   container {
     name   = "hello-world"
     image  = "microsoft/aci-helloworld:latest"
-    cpu    = "0.5"
-    memory = "1.5"
+    cpu    = "0.1"
+    memory = "0.1"
 
     ports {
       port     = 80
@@ -26,8 +26,8 @@ resource "azurerm_container_group" "example" {
   container {
     name   = "sidecar"
     image  = "microsoft/aci-tutorial-sidecar"
-    cpu    = "0.5"
-    memory = "1.5"
+    cpu    = "0.1"
+    memory = "0.1"
   }
 
   tags = {
