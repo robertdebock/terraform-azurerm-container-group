@@ -4,11 +4,11 @@ resource "azurerm_resource_group" "example" {
 }
 
 resource "azurerm_container_group" "example" {
-  name                = "example-continst"
+  name                = "example-continst-${var.deployment}"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
   ip_address_type     = "public"
-  dns_name_label      = "robert"
+  dns_name_label      = "robert-${var.deployment}"
   os_type             = "Linux"
 
   container {
@@ -33,4 +33,9 @@ resource "azurerm_container_group" "example" {
   tags = {
     environment = "testing"
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
 }
